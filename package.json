@@ -1,0 +1,37 @@
+{
+  "name": "npb",
+  "main": "server.js",
+  "version": "0.0.0",
+  "license": "AGPL-3.0",
+  "scripts": {
+    "analyze": "BUNDLE_ANALYZE=both next build",
+    "analyze:server": "BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "BUNDLE_ANALYZE=browser next build",
+    "dev": "micro-dev --watch server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production micro"
+  },
+  "browser": {
+    "pouchdb-adapter-leveldb": false,
+    "micro": false,
+    "micro-dev": false,
+    "micro-route": false
+  },
+  "dependencies": {
+    "micro": "^9.3.4",
+    "micro-route": "^2.5.0",
+    "next": "^8.1.0",
+    "pouchdb-adapter-http": "^7.0.0",
+    "pouchdb-adapter-idb": "^7.0.0",
+    "pouchdb-adapter-leveldb": "^7.0.0",
+    "pouchdb-core": "^7.0.0",
+    "pouchdb-mapreduce": "^7.0.0",
+    "pouchdb-replication": "^7.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@zeit/next-bundle-analyzer": "^0.1.2",
+    "micro-dev": "^3.0.0"
+  }
+}
