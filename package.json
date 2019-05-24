@@ -4,9 +4,7 @@
   "version": "0.0.0",
   "license": "AGPL-3.0",
   "scripts": {
-    "analyze": "BUNDLE_ANALYZE=both next build",
-    "analyze:server": "BUNDLE_ANALYZE=server next build",
-    "analyze:browser": "BUNDLE_ANALYZE=browser next build",
+    "analyze": "ANALYZE=true next build",
     "dev": "micro-dev --watch server.js",
     "build": "next build",
     "start": "NODE_ENV=production micro"
@@ -31,7 +29,7 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@zeit/next-bundle-analyzer": "^0.1.2",
+    "@next/bundle-analyzer": "^8.1.1-canary.37",
     "micro-dev": "^3.0.0"
   }
 }
