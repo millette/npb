@@ -4,10 +4,10 @@
 const { parse } = require('url')
 
 // npm
-const allDBs = require("pouchdb-all-dbs")
-const jsonC = require('json-cycle')
+const allDbs = require("pouchdb-all-dbs")
+// const jsonC = require('json-cycle')
 const match = require('micro-route/match')
-const { send } = require('micro')
+// const { send } = require('micro')
 const next = require('next')
 const PouchDB = require('pouchdb-core')
 const LevelPouch = require('pouchdb-adapter-leveldb')
@@ -20,9 +20,9 @@ PouchDB.plugin(LevelPouch)
   .plugin(mapreduce)
   .plugin(replication);
 
-allDBs(PouchDB)
+allDbs(PouchDB)
 
-const db = new PouchDB('hiha')
+// const db = new PouchDB('hiha')
 
 const dev = process.env.NODE_ENV !== 'production'
 
@@ -32,7 +32,6 @@ const handle = app.getRequestHandler()
 const isI = req => match(req, '/')
 const isA = req => match(req, '/a')
 const isB = req => match(req, '/b')
-const isZ = req => match(req, '/z')
 
 async function main (req, res) {
   // console.log('RES-keys', Object.keys(res), res.end, typeof res.end)
@@ -40,7 +39,8 @@ async function main (req, res) {
   const { query } = parsedUrl
 
   if (isI(req)) {
-    return app.render(req, res, '/', { db: jsonC.decycle(db) })
+    return PouchDB.allDbs()
+      .then((alldbs) => app.render(req, res, '/', { alldbs }))
   }
 
   if (isA(req)) {
@@ -49,19 +49,6 @@ async function main (req, res) {
 
   if (isB(req)) {
     return app.render(req, res, '/a', query)
-  }
-
-  if (isZ(req)) {
-    // When rendering client-side, we will request the same data from this route
-      // res.json(db)
-      // return JSON.parse(jsonC.stringify(db))
-      return send(res, 200, {is: 'hello'})
-    /*
-      server.get('/_data/item', (req, res) => {
-      const itemData = api.getItem()
-      res.json(itemData)
-    })
-    */
   }
 
   return handle(req, res, parsedUrl)

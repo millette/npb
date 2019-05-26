@@ -24,7 +24,7 @@ const Index = (props) => (
         </Link>
       </li>
     </ul>
-  <pre>{jsonC.stringify(props.db, null, '  ')}</pre>
+  <pre>{jsonC.stringify(props.alldbs, null, '  ')}</pre>
   </div>
 )
 
@@ -33,9 +33,10 @@ Index.getInitialProps = (o) => {
   const isServer = !!req
   console.log('getInitialProps called:', isServer ? 'server' : 'client', typeof query, query)
   if (isServer) return query
-  return jsonC.decycle({
-    db: new PouchDB('booya')
-  })
+
+  // const db = new PouchDB('booya')
+  return PouchDB.allDbs()
+    .then((alldbs) => ({alldbs}))
 }
 
 export default Index
