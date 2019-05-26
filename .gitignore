@@ -1,4 +1,6 @@
-node_modules
-.next
-hiha
+node_modules/
+.next/
+hiha/
+pouch__all_dbs__/
 npb.code-workspace
+lib/pouchdb-node.js

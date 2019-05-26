@@ -4,6 +4,7 @@
 const { parse } = require('url')
 
 // npm
+const allDBs = require("pouchdb-all-dbs")
 const jsonC = require('json-cycle')
 const match = require('micro-route/match')
 const { send } = require('micro')
@@ -18,6 +19,8 @@ PouchDB.plugin(LevelPouch)
   .plugin(HttpPouch)
   .plugin(mapreduce)
   .plugin(replication);
+
+allDBs(PouchDB)
 
 const db = new PouchDB('hiha')
 
