@@ -9,8 +9,8 @@ const CounterProvider = (props) => {
       value={{
         count,
         increase: () => setCount(count + 1),
-        decrease: (val) => setCount(count + val),
-        increaseBy: () => setCount(count - 1)
+        decrease: () => setCount(count - 1),
+        increaseBy: (val) => setCount(count + val )
       }}
     >
       {props.children}
