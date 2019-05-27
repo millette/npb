@@ -10,7 +10,7 @@ const CounterProvider = ({ children }) => {
   // const [count, setCount] = useState(0)
   // const [db, setDb] = useState(PouchDB && new PouchDB('whatwhat'))
   const [db] = useState(PouchDB && new PouchDB("whatwhat"))
-  console.log("DB", db)
+  // console.log("DB", db)
   return (
     <CounterContext.Provider
       value={{
