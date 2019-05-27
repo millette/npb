@@ -1,19 +1,26 @@
+// npm
 import { createContext, useState } from "react"
+
+// self
+import PouchDB from "../lib/pouchdb.js"
 
 const CounterContext = createContext()
 
-const CounterProvider = (props) => {
-  const [count, setCount] = useState(0)
+const CounterProvider = ({ children }) => {
+  // const [count, setCount] = useState(0)
+  // const [db, setDb] = useState(PouchDB && new PouchDB('whatwhat'))
+  const [db] = useState(PouchDB && new PouchDB("whatwhat"))
+  console.log("DB", db)
   return (
     <CounterContext.Provider
       value={{
-        count,
-        increase: () => setCount(count + 1),
-        decrease: () => setCount(count - 1),
-        increaseBy: (val) => setCount(count + val),
+        count: db,
+        increase: () => {}, // setCount(count + 1),
+        decrease: () => {}, // setCount(count - 1),
+        increaseBy: (val) => {}, // setCount(count + val),
       }}
     >
-      {props.children}
+      {children}
     </CounterContext.Provider>
   )
 }
