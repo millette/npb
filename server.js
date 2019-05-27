@@ -1,13 +1,13 @@
 "use strict"
 
 // core
-const { parse } = require('url')
+const { parse } = require("url")
 
 // npm
 // const jsonC = require('json-cycle')
-const match = require('micro-route/match')
+const match = require("micro-route/match")
 // const { send } = require('micro')
-const next = require('next')
+const next = require("next")
 
 /*
 const allDbs = require("pouchdb-all-dbs")
@@ -27,16 +27,16 @@ allDbs(PouchDB)
 
 // const db = new PouchDB('hiha')
 
-const dev = process.env.NODE_ENV !== 'production'
+const dev = process.env.NODE_ENV !== "production"
 
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const isI = req => match(req, '/')
-const isA = req => match(req, '/a')
-const isB = req => match(req, '/b')
+const isI = (req) => match(req, "/")
+const isA = (req) => match(req, "/a")
+const isB = (req) => match(req, "/b")
 
-async function main (req, res) {
+async function main(req, res) {
   // console.log('RES-keys', Object.keys(res), res.end, typeof res.end)
   const parsedUrl = parse(req.url, true)
   const { query } = parsedUrl
@@ -49,17 +49,17 @@ async function main (req, res) {
   */
 
   if (isA(req)) {
-    return app.render(req, res, '/b', query)
+    return app.render(req, res, "/b", query)
   }
 
   if (isB(req)) {
-    return app.render(req, res, '/a', query)
+    return app.render(req, res, "/a", query)
   }
 
   return handle(req, res, parsedUrl)
 }
 
-async function setup (handler) {
+async function setup(handler) {
   await app.prepare()
   return handler
 }

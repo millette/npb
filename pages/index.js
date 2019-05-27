@@ -1,11 +1,11 @@
 // npm
-import Link from 'next/link'
+import Link from "next/link"
 // import jsonC from 'json-cycle'
 
 // self
 // import PouchDB from '../lib/pouchdb-browser.js'
 // import PouchDB from '../lib/pouchdb.js'
-import { CounterConsumer } from '../components/counter-provider'
+import { CounterConsumer } from "../components/counter-provider"
 
 const Index = (props) => (
   <>
@@ -21,12 +21,12 @@ const Index = (props) => (
     </CounterConsumer>
     <ul>
       <li>
-        <Link href='/b' as='/a'>
+        <Link href="/b" as="/a">
           <a>a</a>
         </Link>
       </li>
       <li>
-        <Link href='/a' as='/b'>
+        <Link href="/a" as="/b">
           <a>b</a>
         </Link>
       </li>
@@ -35,7 +35,6 @@ const Index = (props) => (
 )
 
 //     <pre>{jsonC.stringify(props.alldbs, null, '  ')}</pre>
-
 
 // const db = PouchDB ? new PouchDB('booya') : 'SKIPPED'
 // const db = new PouchDB('booya')

@@ -2,7 +2,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
   // would be nice to support more webpack-bundle-analyzer options like:
   openAnalyzer: false,
-  generateStatsFile: true
+  generateStatsFile: true,
 })
 module.exports = withBundleAnalyzer({})
 

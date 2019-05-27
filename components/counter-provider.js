@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useState } from "react"
 
 const CounterContext = createContext()
 
@@ -10,7 +10,7 @@ const CounterProvider = (props) => {
         count,
         increase: () => setCount(count + 1),
         decrease: () => setCount(count - 1),
-        increaseBy: (val) => setCount(count + val )
+        increaseBy: (val) => setCount(count + val),
       }}
     >
       {props.children}

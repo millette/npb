@@ -1,12 +1,12 @@
 // npm
-import App, { Container } from 'next/app'
+import App, { Container } from "next/app"
 
 // self
 /* First we import our provider */
-import CounterProvider from '../components/counter-provider'
+import CounterProvider from "../components/counter-provider"
 
 class MyApp extends App {
-  render () {
+  render() {
     const { Component, pageProps } = this.props
     return (
       <Container>
