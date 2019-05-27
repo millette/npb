@@ -5,9 +5,10 @@
   "license": "AGPL-3.0",
   "scripts": {
     "analyze": "ANALYZE=true next build",
-    "dev": "micro-dev --watch server.js",
     "build": "next build",
-    "start": "NODE_ENV=production micro"
+    "dev": "micro-dev --watch server.js",
+    "start": "NODE_ENV=production micro",
+    "test": "healthier"
   },
   "browser": {
     "pouchdb-adapter-leveldb": false,
@@ -34,6 +35,25 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^8.1.1-canary.37",
     "healthier": "^2.0.0",
-    "micro-dev": "^3.0.0"
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "micro-dev": "^3.0.0",
+    "prettier": "^1.17.1"
+  },
+  "lint-staged": {
+    "*.{js,json,md,mdx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "es5",
+    "arrowParens": "always"
   }
 }
