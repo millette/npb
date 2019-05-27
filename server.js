@@ -4,11 +4,13 @@
 const { parse } = require('url')
 
 // npm
-const allDbs = require("pouchdb-all-dbs")
 // const jsonC = require('json-cycle')
 const match = require('micro-route/match')
 // const { send } = require('micro')
 const next = require('next')
+
+/*
+const allDbs = require("pouchdb-all-dbs")
 const PouchDB = require('pouchdb-core')
 const LevelPouch = require('pouchdb-adapter-leveldb')
 const HttpPouch = require('pouchdb-adapter-http')
@@ -21,6 +23,7 @@ PouchDB.plugin(LevelPouch)
   .plugin(replication);
 
 allDbs(PouchDB)
+*/
 
 // const db = new PouchDB('hiha')
 
@@ -38,10 +41,12 @@ async function main (req, res) {
   const parsedUrl = parse(req.url, true)
   const { query } = parsedUrl
 
+  /*
   if (isI(req)) {
     return PouchDB.allDbs()
       .then((alldbs) => app.render(req, res, '/', { alldbs }))
   }
+  */
 
   if (isA(req)) {
     return app.render(req, res, '/b', query)
