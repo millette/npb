@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+// import React, { createContext, Component } from 'react'
+import { createContext, Component } from 'react'
 
-/* First we will make a new context */
-const CounterContext = React.createContext()
+// const CounterContext = React.createContext()
+const CounterContext = createContext()
 
-/* Then create a provider Component */
 class CounterProvider extends Component {
   state = {
     count: 0

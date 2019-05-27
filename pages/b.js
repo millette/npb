@@ -10,7 +10,6 @@ export default () => <div>
   <CounterConsumer>
     {({ count, increase, decrease }) => (
       <div>
-        <h1>HOME</h1>
         <p>Counter: {count}</p>
         <button onClick={increase}>Increase</button>
         <button onClick={decrease}>Decrease</button>
