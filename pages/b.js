@@ -5,12 +5,12 @@ import Link from 'next/link'
 import { CounterConsumer } from '../components/counter-provider'
 
 export default () => <div>
-  <h2>b</h2>
+  <h1>b</h1>
 
   <CounterConsumer>
     {({ count, increase, decrease }) => (
       <div>
-        <p>Counter: {count}</p>
+        <p>Counter: {count}!</p>
         <button onClick={increase}>Increase</button>
         <button onClick={decrease}>Decrease</button>
       </div>
