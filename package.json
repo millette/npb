@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^8.1.1-canary.37",
+    "healthier": "^2.0.0",
     "micro-dev": "^3.0.0"
   }
 }
