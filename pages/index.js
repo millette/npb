@@ -13,7 +13,7 @@ const Index = (props) => (
     <CounterConsumer>
       {({ count, increase, decrease }) => (
         <div>
-          <p>Counter: {count}</p>
+          <p>Counter: {Object.keys(count).join(", ")}</p>
           <button onClick={increase}>Increase</button>
           <button onClick={decrease}>Decrease</button>
         </div>
