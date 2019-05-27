@@ -5,7 +5,7 @@
   "license": "AGPL-3.0",
   "scripts": {
     "analyze": "ANALYZE=true next build",
-    "build": "next build",
+    "build": "healthier && next build",
     "dev": "micro-dev --watch server.js",
     "start": "NODE_ENV=production micro",
     "test": "healthier"
