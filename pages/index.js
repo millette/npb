@@ -5,13 +5,20 @@ import jsonC from 'json-cycle'
 // self
 // import PouchDB from '../lib/pouchdb-browser.js'
 import PouchDB from '../lib/pouchdb.js'
-
-// const db = PouchDB ? new PouchDB('booya') : 'SKIPPED'
-// const db = new PouchDB('booya')
-// const db = 'SKIPPED'
+import { CounterConsumer } from '../components/counter-provider'
 
 const Index = (props) => (
-  <div>
+  <>
+    <CounterConsumer>
+      {({ count, increase, decrease }) => (
+        <div>
+          <h1>HOME</h1>
+          <p>Counter: {count}</p>
+          <button onClick={increase}>Increase</button>
+          <button onClick={decrease}>Decrease</button>
+        </div>
+      )}
+    </CounterConsumer>
     <ul>
       <li>
         <Link href='/b' as='/a'>
@@ -24,9 +31,21 @@ const Index = (props) => (
         </Link>
       </li>
     </ul>
-  <pre>{jsonC.stringify(props.alldbs, null, '  ')}</pre>
+    <pre>{jsonC.stringify(props.alldbs, null, '  ')}</pre>
+  </>
+)
+
+
+
+// const db = PouchDB ? new PouchDB('booya') : 'SKIPPED'
+// const db = new PouchDB('booya')
+// const db = 'SKIPPED'
+/*
+const Index = (props) => (
+  <div>
   </div>
 )
+*/
 
 Index.getInitialProps = (o) => {
   const { req, query } = o
