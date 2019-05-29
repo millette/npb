@@ -33,7 +33,7 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^8.1.1-canary.39",
+    "@next/bundle-analyzer": "^8.1.1-canary.40",
     "healthier": "^2.0.0",
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
