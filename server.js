@@ -4,6 +4,8 @@
 const { parse } = require("url")
 
 // npm
+require("dotenv-defaults").config()
+
 // const jsonC = require('json-cycle')
 const match = require("micro-route/match")
 // const { send } = require('micro')
@@ -26,7 +28,9 @@ PouchDB.plugin(LevelPouch)
 
 allDbs(PouchDB)
 
-const db = new PouchDB("whatwhat")
+console.log("DB_NAME:", process.env.DB_NAME)
+
+const db = new PouchDB(process.env.DB_NAME)
 
 // console.log(db)
 db.allDocs({ include_docs: true })
