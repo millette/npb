@@ -51,7 +51,7 @@ class PageDB1 extends Component {
   submit(ev) {
     const { doc } = this.state
     ev.preventDefault()
-    const fd = new FormData(ev.target)
+    const fd = new window.FormData(ev.target)
     const name = fd.get("name")
     const nDoc = {
       _id: docName,
@@ -68,7 +68,7 @@ class PageDB1 extends Component {
             _rev: x.rev,
           },
         })
-        fetch("/db1", {
+        window.fetch("/db1", {
           method: "PUT",
           body: JSON.stringify(nDoc),
         })
