@@ -5,8 +5,8 @@ const { parse } = require("url")
 
 // npm
 require("dotenv-defaults").config()
-
 const match = require("micro-route/match")
+const { json } = require("micro")
 // const { send } = require('micro')
 const next = require("next")
 const allDbs = require("pouchdb-all-dbs")
@@ -58,9 +58,11 @@ const dev = process.env.NODE_ENV !== "production"
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const isI = (req) => match(req, "/")
+// const isI = (req) => match(req, "/")
 const isA = (req) => match(req, "/a")
 const isB = (req) => match(req, "/b")
+
+const isPut = (req) => match(req, "/db1", ["PUT"])
 
 async function main(req, res) {
   // console.log('RES-keys', Object.keys(res), res.end, typeof res.end)
@@ -73,6 +75,16 @@ async function main(req, res) {
       .then((alldbs) => app.render(req, res, '/', { alldbs }))
   }
   */
+
+  if (isPut(req)) {
+    console.log("PUT", Object.keys(req))
+    // return db.put()
+
+    return json(req).then((j) => {
+      console.log(j)
+      return db.put(j)
+    })
+  }
 
   if (isA(req)) {
     return app.render(req, res, "/b", query)
