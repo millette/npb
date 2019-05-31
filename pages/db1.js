@@ -9,7 +9,7 @@ const docName = "demo666"
 
 class PageDB1 extends Component {
   constructor(props) {
-    // console.log('ctor', props)
+    console.log("ctor", props, process.env.DB_NAME)
     super(props)
     this.state = { doc: props.doc }
     this.submit = this.submit.bind(this)
