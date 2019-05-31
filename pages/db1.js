@@ -1,6 +1,7 @@
 // npm
 import Link from "next/link"
 import { Component } from "react"
+import stringify from "fast-json-stable-stringify"
 
 // self
 import { db } from "../components/db-provider"
@@ -50,22 +51,27 @@ class PageDB1 extends Component {
   submit(ev) {
     const { doc } = this.state
     ev.preventDefault()
-    // console.log('ev', ev)
     const fd = new FormData(ev.target)
-    // const fda = Array.from(fd.entries())
     const name = fd.get("name")
-    // console.log('fda', fda, name)
     const nDoc = {
       _id: docName,
       ...doc,
       name,
     }
+    console.log("PUTTING", nDoc)
     db.put(nDoc)
       .then((x) => {
-        // getInitialProps(a)
-        nDoc._rev = x.rev
-        // console.log('x', x, doc, nDoc)
-        this.setState({ doc: nDoc })
+        // nDoc._rev = x.rev
+        this.setState({
+          doc: {
+            ...nDoc,
+            _rev: x.rev,
+          },
+        })
+        fetch("/db1", {
+          method: "PUT",
+          body: JSON.stringify(nDoc),
+        })
       })
       .catch((e) => console.error("eee", e))
   }
@@ -76,11 +82,7 @@ class PageDB1 extends Component {
       <div>
         <h1>Page DB1</h1>
         <h2>Doc</h2>
-        {doc ? (
-          <pre>{JSON.stringify(doc, null, "  ")}</pre>
-        ) : (
-          <p>No doc yet.</p>
-        )}
+        {doc ? <pre>{stringify(doc, { space: 2 })}</pre> : <p>No doc yet.</p>}
         <h3>{doc ? "Edit" : "Create"}</h3>
         <form onSubmit={this.submit}>
           <label>
