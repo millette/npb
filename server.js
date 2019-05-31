@@ -9,6 +9,33 @@ const match = require("micro-route/match")
 // const { send } = require('micro')
 const next = require("next")
 
+// self
+// const PouchDB = require("./lib/pouchdb.js")
+
+const allDbs = require("pouchdb-all-dbs")
+const PouchDB = require("pouchdb-core")
+const LevelPouch = require("pouchdb-adapter-leveldb")
+const HttpPouch = require("pouchdb-adapter-http")
+const mapreduce = require("pouchdb-mapreduce")
+// const replication = require('pouchdb-replication')
+
+PouchDB.plugin(LevelPouch)
+  .plugin(HttpPouch)
+  .plugin(mapreduce)
+// .plugin(replication)
+
+allDbs(PouchDB)
+
+const db = new PouchDB("whatwhat")
+
+// console.log(db)
+db.allDocs({ include_docs: true })
+  .then(({ rows }) => {
+    console.log(rows.map(({ doc }) => doc))
+    return PouchDB.allDbs()
+  })
+  .then(console.log)
+
 /*
 const allDbs = require("pouchdb-all-dbs")
 const PouchDB = require('pouchdb-core')
