@@ -6,14 +6,9 @@ const { parse } = require("url")
 // npm
 require("dotenv-defaults").config()
 
-// const jsonC = require('json-cycle')
 const match = require("micro-route/match")
 // const { send } = require('micro')
 const next = require("next")
-
-// self
-// const PouchDB = require("./lib/pouchdb.js")
-
 const allDbs = require("pouchdb-all-dbs")
 const PouchDB = require("pouchdb-core")
 const LevelPouch = require("pouchdb-adapter-leveldb")

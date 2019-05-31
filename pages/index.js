@@ -1,10 +1,7 @@
 // npm
 import Link from "next/link"
-// import jsonC from 'json-cycle'
 
 // self
-// import PouchDB from '../lib/pouchdb-browser.js'
-// import PouchDB from '../lib/pouchdb.js'
 import { CounterConsumer } from "../components/counter-provider"
 
 const Index = (props) => (
