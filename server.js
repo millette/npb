@@ -1,7 +1,9 @@
 "use strict"
 
 // core
-const { parse } = require("url")
+// const { parse } = require("url")
+// const { URL } = require("url")
+const { URL } = require("url")
 
 // npm
 require("dotenv-defaults").config()
@@ -23,17 +25,27 @@ PouchDB.plugin(LevelPouch)
 
 allDbs(PouchDB)
 
+const q2o = (u) => {
+  const o = {}
+  new URL(u, "http://localhost/").searchParams.forEach((k, v) => {
+    o[k] = v
+  })
+  return o
+}
+
 console.log("DB_NAME:", process.env.DB_NAME)
 
 const db = new PouchDB(process.env.DB_NAME)
 
 // console.log(db)
+/*
 db.allDocs({ include_docs: true })
   .then(({ rows }) => {
-    console.log(rows.map(({ doc }) => doc))
+    // console.log(rows.map(({ doc }) => doc))
     return PouchDB.allDbs()
   })
   .then(console.log)
+*/
 
 /*
 const allDbs = require("pouchdb-all-dbs")
@@ -65,9 +77,13 @@ const isB = (req) => match(req, "/b")
 const isPut = (req) => match(req, "/db1", ["PUT"])
 
 async function main(req, res) {
-  // console.log('RES-keys', Object.keys(res), res.end, typeof res.end)
-  const parsedUrl = parse(req.url, true)
-  const { query } = parsedUrl
+  // console.log('REQ-keys', Object.keys(req))
+  // const parsedUrl = parse(req.url, true)
+  // const { query } = parsedUrl
+  // const query = q2o(parsedUrl.query)
+  const query = q2o(req.url)
+
+  // const u = new URL(req.url)
 
   /*
   if (isI(req)) {
@@ -77,11 +93,11 @@ async function main(req, res) {
   */
 
   if (isPut(req)) {
-    console.log("PUT", Object.keys(req))
+    // console.log("PUT", Object.keys(req))
     // return db.put()
 
     return json(req).then((j) => {
-      console.log(j)
+      // console.log(j)
       return db.put(j)
     })
   }
@@ -94,7 +110,24 @@ async function main(req, res) {
     return app.render(req, res, "/a", query)
   }
 
+  /*
+  const parsedUrl = {
+    ...new URL(req.url),
+    query
+  }
+
+  console.log('parsedUrl', parsedUrl)
+
   return handle(req, res, parsedUrl)
+  */
+  return handle(req, res)
+  // return handle(req, res, req.url)
+  /*
+  return handle(req, res, {
+    ...new URL(req.url),
+    query
+  })
+  */
 }
 
 async function setup(handler) {
