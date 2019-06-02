@@ -145,6 +145,11 @@ class PageDB3 extends Component {
               <a>Page db3/demo777</a>
             </Link>
           </li>
+          <li>
+            <Link href="/pages">
+              <a>Pages</a>
+            </Link>
+          </li>
         </ul>
       </div>
     )

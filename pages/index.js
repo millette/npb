@@ -18,6 +18,12 @@ const Index = (props) => (
     </CounterConsumer>
     <ul>
       <li>
+        <Link href="/pages">
+          <a>Pages</a>
+        </Link>
+      </li>
+
+      <li>
         <Link href="/db1">
           <a>Page db1</a>
         </Link>
