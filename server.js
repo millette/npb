@@ -33,7 +33,7 @@ const q2o = (u) => {
   return o
 }
 
-console.log("DB_NAME:", process.env.DB_NAME)
+// console.log("DB_NAME:", process.env.DB_NAME)
 
 const db = new PouchDB(process.env.DB_NAME)
 
@@ -73,6 +73,12 @@ const handle = app.getRequestHandler()
 // const isI = (req) => match(req, "/")
 const isA = (req) => match(req, "/a")
 const isB = (req) => match(req, "/b")
+const is3 = (req) => {
+  const o = match(req, "/db3/:id")
+  // console.log('MATCH-O', o)
+  if (!o) return
+  return o.params
+}
 
 const isPut = (req) => match(req, "/db1", ["PUT"])
 
@@ -108,6 +114,21 @@ async function main(req, res) {
 
   if (isB(req)) {
     return app.render(req, res, "/a", query)
+  }
+
+  const abc = is3(req)
+  if (abc) {
+    // console.log('IS-DB3', query, abc)
+
+    /*
+    const oy = match(req, '/db3/:id')
+    console.log('OY:', oy)
+    console.log('OY.params:', oy.params)
+    console.log('OY.query:', oy.query)
+    // { params, query } = oy
+    */
+
+    return app.render(req, res, "/db3", abc)
   }
 
   /*
