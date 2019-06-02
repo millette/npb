@@ -33,7 +33,7 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^8.1.1-canary.42",
+    "@next/bundle-analyzer": "^8.1.1-canary.43",
     "dotenv-defaults": "^1.0.2",
     "dotenv-webpack": "^1.7.0",
     "healthier": "^2.0.0",
