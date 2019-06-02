@@ -106,6 +106,16 @@ class PageDB1 extends Component {
               <a>Page db2</a>
             </Link>
           </li>
+          <li>
+            <Link href="/db3?id=demo666" as="/db3/demo666">
+              <a>Page db3/demo666</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/db3?id=demo777" as="/db3/demo777">
+              <a>Page db3/demo777</a>
+            </Link>
+          </li>
         </ul>
       </div>
     )
