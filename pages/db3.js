@@ -120,11 +120,6 @@ class PageDB3 extends Component {
               <a>Home</a>
             </Link>
           </li>
-          <li>
-            <Link href="/pages">
-              <a>Pages</a>
-            </Link>
-          </li>
         </ul>
       </div>
     )

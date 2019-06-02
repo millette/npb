@@ -1,5 +1,6 @@
 // npm
 import Link from "next/link"
+import stringify from "fast-json-stable-stringify"
 
 // self
 import { db } from "../components/db-provider"
@@ -19,30 +20,17 @@ const Pages = ({ rows }) => (
           <dd>{_id}</dd>
           <dt>rev</dt>
           <dd>{_rev}</dd>
-          {rest && (
+          {Object.keys(rest).length > 0 && (
             <>
               <dt>rest</dt>
               <dd>
-                <pre>{JSON.stringify(rest, null, "  ")}</pre>
+                <pre>{stringify(rest, { space: 2 })}</pre>
               </dd>
             </>
           )}
         </dl>
       </div>
     ))}
-
-    <ul>
-      <li>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/pages">
-          <a>Pages</a>
-        </Link>
-      </li>
-    </ul>
   </div>
 )
 
