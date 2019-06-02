@@ -1,20 +1,16 @@
 "use strict"
 
-// core
-const { URL } = require("url")
-
 // npm
 require("dotenv-defaults").config()
 const match = require("micro-route/match")
 const { json } = require("micro")
-// const { send } = require('micro')
 const next = require("next")
-// const allDbs = require("pouchdb-all-dbs")
 const PouchDB = require("pouchdb-core")
 const LevelPouch = require("pouchdb-adapter-leveldb")
 // const HttpPouch = require("pouchdb-adapter-http")
 // const mapreduce = require("pouchdb-mapreduce")
 // const replication = require('pouchdb-replication')
+// const allDbs = require("pouchdb-all-dbs")
 
 PouchDB.plugin(LevelPouch)
 // .plugin(HttpPouch)
@@ -23,18 +19,8 @@ PouchDB.plugin(LevelPouch)
 
 // allDbs(PouchDB)
 
-const q2o = (u) => {
-  const o = {}
-  new URL(u, "http://localhost/").searchParams.forEach((k, v) => {
-    o[k] = v
-  })
-  return o
-}
-
 const db = new PouchDB(process.env.DB_NAME)
-
 const dev = process.env.NODE_ENV !== "production"
-
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
@@ -45,17 +31,13 @@ const is3 = (req) => {
 
 const isPut = (req) => match(req, "/db1", ["PUT"])
 
-async function main(req, res) {
-  const query = q2o(req.url)
-
-  if (isPut(req)) {
-    return json(req).then(db.put)
-  }
+// async
+function main(req, res) {
+  if (isPut(req)) return json(req).then(db.put)
 
   const abc = is3(req)
-  if (abc) {
-    return app.render(req, res, "/db3", abc)
-  }
+  if (abc) app.render(req, res, "/db3", abc)
+
   return handle(req, res)
 }
 
