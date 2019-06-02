@@ -121,31 +121,6 @@ class PageDB3 extends Component {
             </Link>
           </li>
           <li>
-            <Link href="/db1">
-              <a>Page db1</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/db2">
-              <a>Page db2</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/db3?id=allo" as="/db3/allo">
-              <a>Page db3/allo</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/db3?id=demo666" as="/db3/demo666">
-              <a>Page db3/demo666</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/db3?id=demo777" as="/db3/demo777">
-              <a>Page db3/demo777</a>
-            </Link>
-          </li>
-          <li>
             <Link href="/pages">
               <a>Pages</a>
             </Link>

@@ -22,28 +22,6 @@ const Index = (props) => (
           <a>Pages</a>
         </Link>
       </li>
-
-      <li>
-        <Link href="/db1">
-          <a>Page db1</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/db2">
-          <a>Page db2</a>
-        </Link>
-      </li>
-
-      <li>
-        <Link href="/b" as="/a">
-          <a>a</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/a" as="/b">
-          <a>b</a>
-        </Link>
-      </li>
     </ul>
   </>
 )
