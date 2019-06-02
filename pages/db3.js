@@ -111,7 +111,7 @@ class PageDB3 extends Component {
         <form onSubmit={this.submit}>
           <label>
             Name:
-            <input type="text" name="name" defaultValue={doc ? doc._id : ""} />
+            <input type="text" name="name" defaultValue={doc ? doc.name : ""} />
           </label>
         </form>
         <ul>
