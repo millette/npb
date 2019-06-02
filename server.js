@@ -41,8 +41,6 @@ const handle = app.getRequestHandler()
 const is3 = (req) => {
   const o = match(req, "/db3/:id")
   return o && o.params
-  // if (!o) return
-  // return o.params
 }
 
 const isPut = (req) => match(req, "/db1", ["PUT"])
@@ -52,17 +50,13 @@ async function main(req, res) {
 
   if (isPut(req)) {
     return json(req).then(db.put)
-    /*
-    return json(req).then((j) => {
-      return db.put(j)
-    })
-    */
   }
 
   const abc = is3(req)
   if (abc) {
     return app.render(req, res, "/db3", abc)
   }
+  return handle(req, res)
 }
 
 async function setup(handler) {
