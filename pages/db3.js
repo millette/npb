@@ -8,7 +8,6 @@ import { db } from "../components/db-provider"
 
 class PageDB3 extends Component {
   constructor(props) {
-    console.log("ctor", props)
     super(props)
     this.state = {}
     this.submit = this.submit.bind(this)
@@ -16,19 +15,11 @@ class PageDB3 extends Component {
 
   static getInitialProps(a) {
     const { query } = a
-
     if (!query.id) throw new Error("Niet!")
-
     return db.get(query.id).then((doc) => ({ doc }))
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    /*
-    console.log('getDerivedStateFromProps')
-    console.log('nextProps', nextProps)
-    console.log('prevState', prevState)
-    */
-
     if (
       prevState &&
       prevState.doc &&
@@ -45,12 +36,10 @@ class PageDB3 extends Component {
     )
       return null
 
-    // console.log('SET NEW DOC', nextProps.doc)
     return { doc: nextProps.doc }
   }
 
   submit(ev) {
-    // console.log('SUBMIT-props', this.props)
     const { _id } = this.props
     const doc = this.state.doc || {}
     ev.preventDefault()
@@ -58,13 +47,11 @@ class PageDB3 extends Component {
     const name = fd.get("name")
     const nDoc = {
       _id,
-      // _id: docName,
       ...doc,
       name,
     }
     db.put(nDoc)
       .then((x) => {
-        // nDoc._rev = x.rev
         this.setState({
           doc: {
             ...nDoc,

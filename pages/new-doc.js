@@ -1,6 +1,5 @@
 // npm
 import Link from "next/link"
-// import { Component } from "react"
 import Router from "next/router"
 
 // self

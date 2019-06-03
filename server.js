@@ -31,12 +31,10 @@ const is3 = (req) => {
 
 const isPut = (req) => match(req, "/db1", ["PUT"])
 
-function main(req, res) {
+const main = (req, res) => {
   if (isPut(req)) return json(req).then(db.put)
-
   const abc = is3(req)
   if (abc) return app.render(req, res, "/db3", abc)
-
   return handle(req, res)
 }
 
