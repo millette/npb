@@ -31,19 +31,15 @@ const is3 = (req) => {
 
 const isPut = (req) => match(req, "/db1", ["PUT"])
 
-// async
 function main(req, res) {
   if (isPut(req)) return json(req).then(db.put)
 
   const abc = is3(req)
-  if (abc) app.render(req, res, "/db3", abc)
+  if (abc) return app.render(req, res, "/db3", abc)
 
   return handle(req, res)
 }
 
-async function setup(handler) {
-  await app.prepare()
-  return handler
-}
+const setup = (handler) => app.prepare().then(() => handler)
 
 module.exports = setup(main)
