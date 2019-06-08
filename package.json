@@ -33,14 +33,14 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^8.1.1-canary.43",
+    "@next/bundle-analyzer": "^8.1.1-canary.47",
     "dotenv-defaults": "^1.0.2",
     "dotenv-webpack": "^1.7.0",
     "healthier": "^2.0.0",
-    "husky": "^2.3.0",
-    "lint-staged": "^8.1.7",
+    "husky": "^2.4.0",
+    "lint-staged": "^8.2.0",
     "micro-dev": "^3.0.0",
-    "prettier": "^1.17.1"
+    "prettier": "^1.18.2"
   },
   "lint-staged": {
     "*.{js,json,md}": [
